@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-    REDIS_TCP_ADDR: '139.198.1.168',
-    REDIS_TCP_PORT: '11019',
+    REDIS_TCP_ADDR: '127.0.0.1',
+    REDIS_TCP_PORT: '6379',
     PORT: 9527
 };

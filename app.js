@@ -21,5 +21,5 @@ app.use('/', require('./routes/v1'));
 app.use(cache.out);
 
 app.listen(config.PORT, ()=> {
-    console.log('menpiao app listening at port %s', config.PORT);
+    console.log('server listening at port %s', config.PORT);
 });
