@@ -8,7 +8,8 @@ var config = require('./config');
 var cache = require('./cache')({
     redis_host: config.REDIS_TCP_ADDR,
     redis_port: config.REDIS_TCP_PORT,
-    db: 15
+    db: 15,
+    expire: 10
 });
 
 app.use(bodyParser.json());

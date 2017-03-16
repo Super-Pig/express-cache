@@ -13,6 +13,7 @@ var genKey = req=> {
 
 module.exports = redisConfig=> {
     const redisClient = redis.getInstance(redisConfig.redis_host, redisConfig.redis_port, redisConfig.db);
+    const expire = redisConfig.expire;
 
     return {
         'in': (req, res, next)=> {
@@ -35,7 +36,13 @@ module.exports = redisConfig=> {
                 var key = genKey(req);
 
                 redisClient.set(key, JSON.stringify(res.data), err=> {
-                    return res.json(res.data);
+                    if (err) {
+                        return next(err);
+                    }
+
+                    redisClient.expire(key, expire, err=> {
+                        return res.json(res.data);
+                    });
                 });
             } else {
                 next();
